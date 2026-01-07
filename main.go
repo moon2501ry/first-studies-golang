@@ -81,4 +81,112 @@ func main() {
 	// Pega a entrada do usuário e armazena na variável nome
 	fmt.Scanf("%s", &nome) // Scanf requer o endereço da variável/ponteiro (onde a variavel será/está armazenada)
 	fmt.Printf("Seu nome é %s? Nome feio esse..\n", nome)
+
+	/* Operações do Go:
+	Aritméticas: +, -, *, /, %, ++, --
+	Lógicas: && (AND), || (OR), ! (NOT)
+	Comparação: ==, !=, <, >, <=, >=
+	Atribuição: =, +=, -=, *=, /=, %=
+	*/
+
+	if string(nome[0]) == "R" || string(nome[0]) == "r" {
+		fmt.Println("Seu nome começa com R, igual meu nome!")
+	} else {
+		fmt.Printf("Seu nome começa com %c, que paia!!\n", nome[0])
+	}
+
+	fmt.Print("Calculadora 2.0, escreva a equação: ")
+	var operacao string
+	var numero1 float32
+	var numero2 float32
+	fmt.Scanf("%f %s %f", &numero1, &operacao, &numero2)
+	var resultado float32
+	var calculado bool
+	calculado = true
+
+	// if operacao == "+" {
+	// 	resultado = numero1 + numero2
+	// } else if operacao == "-" {
+	// 	resultado = numero1 - numero2
+	// } else if operacao == "*" {
+	// 	resultado = numero1 * numero2
+	// } else if operacao == "/" {
+	// 	if numero2 == 0 {
+	// 		fmt.Printf("Você tem oq na cabeça? Como vc quer dividir %.0f coisas pra os 0 amigos q vc tem?! BUUUUHHH >o<\n", numero1)
+	// 		calculado = false
+	// 	} else {
+	// 		resultado = numero1 / numero2
+	// 	}
+	// }
+
+	switch operacao {
+	case "+":
+		resultado = numero1 + numero2
+	case "-":
+		resultado = numero1 - numero2
+	case "*":
+		resultado = numero1 * numero2
+	case "/":
+		if numero2 == 0 {
+			fmt.Printf("Você tem oq na cabeça? Como vc quer dividir %.0f coisas pra os 0 amigos q vc tem?! BUUUUHHH >o<\n", numero1)
+			calculado = false
+		} else {
+			resultado = numero1 / numero2
+		}
+	default:
+		fmt.Printf("Como vc quer fazer %f%s%f, %s não é uma operação!!!!!!!!!!!!!!!! 0¬0\n", numero1, operacao, numero2, operacao)
+	}
+
+	if calculado {
+		fmt.Printf("Resultado: %.2f\n", resultado)
+		if resultado <= 6 && resultado > 3 {
+			fmt.Println("Calcula algo mais grande!!")
+		}
+		if resultado <= 3 && resultado > 0 {
+			fmt.Println("Nanino .-.")
+		}
+		if resultado == 0 {
+			fmt.Println("É liso ;-;")
+		}
+		if resultado < 0 && resultado >= -4 {
+			fmt.Println("Putz...")
+		}
+		if resultado < -4 {
+			fmt.Println("Lapada de negatividade")
+		}
+	} else {
+		fmt.Println("Já sabe né? Fez besteiraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ;_;")
+	}
+
+	/*
+		O GoLang não tem while, mas o for pode ser usado de diversas maneiras:
+			Como while:
+				for <condição> {
+					<expressões>
+				}
+			Como um loop infinito:
+				for {
+					<expressões>
+				}
+			Como um for normal:
+				for <atribuição inicial>; <condição de manutenção>; <operação final de repetição> {
+					<expressões>
+				}
+	*/
+
+	if resultado >= 1 {
+		for i := 1; i <= int(resultado); i++ {
+			fmt.Printf("%d ", i)
+		}
+		fmt.Println("BRUHHH ;_;")
+	} else {
+		fmt.Println("Se fosse um número positivo...")
+	}
+
+	fmt.Print("Digite 3 nomes: ")
+	var nomes [3]string
+	fmt.Scanf("%s %s %s", &nomes[0], &nomes[1], &nomes[2])
+	fmt.Println(nomes[0])
+	fmt.Println(nomes[1])
+	fmt.Println(nomes[2])
 }
